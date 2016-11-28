@@ -15,9 +15,14 @@
     <!--project properties and versions of modules-->
     <properties>
 
-        <!--java-->
         <java.version>1.7</java.version>
         <maven.compiler.version>3.1</maven.compiler.version>
+        <tomcat.version>8.5.8</tomcat.version>
+        <postgresql.version>9.4.1208</postgresql.version>
+        <hsqldb.version>2.3.2</hsqldb.version>
+        <spring.version>3.2.3.RELEASE</spring.version>
+        <hibernate.version>5.1.0.Final</hibernate.version>
+
     </properties>
 
     <!--build properties-->
@@ -38,6 +43,51 @@
 
     <!--dependencies-->
     <dependencies>
+
+        <!--tomcat JDBC driver-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+
+        <!--driver PostgreSQL (DB for production) -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
+        <!--driver hsqldb (DB for tests)-->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+
+        <!--Spring Framework(core + webmvc)-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--Hibernate - implementation of JPA-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
 
     </dependencies>
 
