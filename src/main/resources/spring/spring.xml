@@ -16,7 +16,7 @@
 
 >
 
-    <bean id="a" class="model.Entity"/>
+    <bean id="a" class="model.BaseEntity"/>
 
     <context:property-placeholder location="classpath:db/db.properties"/>
 
