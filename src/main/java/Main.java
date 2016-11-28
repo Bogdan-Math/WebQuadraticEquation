@@ -1,3 +1,4 @@
+import model.Entity;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {

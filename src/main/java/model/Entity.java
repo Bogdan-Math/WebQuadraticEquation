@@ -1,3 +1,5 @@
+package model;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +27,7 @@ public class Entity {
 
     @Override
     public String toString() {
-        return "Entity{" +
+        return "model.Entity{" +
                 "paramA=" + paramA +
                 ", paramB=" + paramB +
                 ", paramC=" + paramC +

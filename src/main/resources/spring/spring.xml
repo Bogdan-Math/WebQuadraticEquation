@@ -16,6 +16,40 @@
 
 >
 
-    <bean id="a" class="Entity"/>
+    <bean id="a" class="model.Entity"/>
+
+    <context:property-placeholder location="classpath:db/db.properties"/>
+
+    <!--create Connection - main class to work with db dy SQL (JDBC)-->
+    <bean id="jdbcDataSource"
+          class="org.apache.tomcat.jdbc.pool.DataSource">
+        <property name="driverClassName" value="${postgres.driver}"/>
+        <property name="url" value="${postgres.url}"/>
+        <property name="username" value="${postgres.username}"/>
+        <property name="password" value="${postgres.password}"/>
+    </bean>
+<!--
+    <bean id="jdbcDataSource"
+          class="org.apache.tomcat.jdbc.pool.DataSource">
+        <property name="driverClassName" value="${hsqldb.driver}"/>
+        <property name="url" value="${hsqldb.url}"/>
+        <property name="username" value="${hsqldb.username}"/>
+        <property name="password" value="${hsqldb.password}"/>
+    </bean>
+-->
+
+    <!--create EntityManagerFactory - main class to work with db by JPQL (JPA)-->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="packagesToScan" value="model"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <!--inject implementation (Hibernate) in JPA-->
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+    <!--transaction manager for a single JPA EntityManagerFactory-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+          p:entityManagerFactory-ref="entityManagerFactory"/>
 
 </beans>
