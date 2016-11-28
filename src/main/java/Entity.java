@@ -14,6 +14,9 @@ public class Entity {
 
     private boolean has_natural_solution;
 
+    public Entity() {
+    }
+
     public Entity(float paramA, float paramB, float paramC) {
         this.paramA = paramA;
         this.paramB = paramB;
