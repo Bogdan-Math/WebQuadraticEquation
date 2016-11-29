@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -25,22 +26,25 @@ public class EquationRepositoryImpl implements EquationRepository {
         return entityManager.find(Equation.class, entityId);
     }
 
-/*
     @Override
-    public boolean checkExists(Equation equation) {
+    public Equation get(Equation entity) {
         try {
             return entityManager
                     .createQuery("SELECT e FROM Equation e WHERE e.paramA=:a AND e.paramB=:b AND e.paramC=:c", Equation.class)
-                    .setParameter("a", a)
-                    .setParameter("b", b)
-                    .setParameter("c", c)
+                    .setParameter("a", entity.getParamA())
+                    .setParameter("b", entity.getParamB())
+                    .setParameter("c", entity.getParamC())
                     .getSingleResult();
         }
         catch (NoResultException e) {
             return null;
         }
     }
-*/
+
+    @Override
+    public boolean contains(Equation entity) {
+        return null != this.get(entity);
+    }
 
     @Override
     public Equation save(Equation entity) {

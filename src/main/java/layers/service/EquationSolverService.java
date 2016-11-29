@@ -22,10 +22,32 @@ public class EquationSolverService {
     @Autowired
     public SolutionRepository solutionRepository;
 
-
     public void o() {
-        for (Equation eq : equationRepository.getAll()) System.out.println(eq.getSolution());
-        for (Solution s : solutionRepository.getAll()) System.out.println(s.getEquations());
+        Equation equation = new Equation(6, 12, 18);
+        Solution solution = new Solution(4.001, 5.001);
+
+        if (equationRepository.contains(equation)) {
+
+            Equation persistedEquation = equationRepository.get(equation);
+            if (!persistedEquation.getSolution().equals(solution)) {
+                //update solution for equation
+                Solution persistedSolution = persistedEquation.getSolution();
+                persistedSolution.setX1(solution.getX1());
+                persistedSolution.setX2(solution.getX2());
+                solutionRepository.save(persistedSolution);
+            }
+
+        }
+        else {
+            if (!solutionRepository.contains(solution)) {
+                equation.setSolution(solutionRepository.save(solution));
+                equationRepository.save(equation);
+            }
+            else {
+                equation.setSolution(solutionRepository.get(solution));
+                equationRepository.save(equation);
+            }
+        }
     }
 
     private Equation equation;

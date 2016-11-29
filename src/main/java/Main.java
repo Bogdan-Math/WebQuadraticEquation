@@ -28,19 +28,15 @@ public class Main {
         for (String bean : appCtx.getBeanDefinitionNames())
             System.out.println(bean);
 
-/*
-        EquationRepository equationRepository = appCtx.getBean(EquationRepository.class);
-        SolutionRepository solutionRepository = appCtx.getBean(SolutionRepository.class);
-*/
-
-/*
-        for (Equation eq : equationRepository.getAll()) System.out.println(eq);
-        for (Solution s : solutionRepository.getAll()) System.out.println(s);
-*/
 
         EquationSolverService equationSolverService = appCtx.getBean(EquationSolverService.class);
         equationSolverService.o();
 
+        EquationRepository equationRepository = appCtx.getBean(EquationRepository.class);
+        SolutionRepository solutionRepository = appCtx.getBean(SolutionRepository.class);
+
+        for (Equation eq : equationRepository.getAll()) System.out.println(eq);
+        for (Solution s : solutionRepository.getAll()) System.out.println(s);
 
 /*
         Equation newE = new Equation(41, 41, 41);
@@ -54,7 +50,7 @@ public class Main {
         //bd.delete(1000004);
 /*
         Equation newE = new Equation(3.7760001, 2.222, 3.333);
-        Equation dbE = equationRepository.checkExists(newE.getParamA(), newE.getParamB(), newE.getParamC());
+        Equation dbE = equationRepository.contains(newE.getParamA(), newE.getParamB(), newE.getParamC());
         if (null == dbE) {
             System.out.println(equationRepository.save(newE));
         }
