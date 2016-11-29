@@ -1,7 +1,10 @@
-import layers.repository.EquationRepository;
-import layers.repository.EquationRepositoryImpl;
+import layers.repository.equation.EquationRepository;
+import layers.repository.solution.SolutionRepository;
+import layers.service.EquationSolverService;
 import model.Equation;
+import model.Solution;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 public class Main {
 
@@ -25,15 +28,38 @@ public class Main {
         for (String bean : appCtx.getBeanDefinitionNames())
             System.out.println(bean);
 
+/*
         EquationRepository equationRepository = appCtx.getBean(EquationRepository.class);
+        SolutionRepository solutionRepository = appCtx.getBean(SolutionRepository.class);
+*/
 
+/*
+        for (Equation eq : equationRepository.getAll()) System.out.println(eq);
+        for (Solution s : solutionRepository.getAll()) System.out.println(s);
+*/
+
+        EquationSolverService equationSolverService = appCtx.getBean(EquationSolverService.class);
+        equationSolverService.o();
+
+
+/*
+        Equation newE = new Equation(41, 41, 41);
+        Solution newS = new Solution(41, 41);
+
+        newE.setSolution(newS);
+
+        solutionRepository.save(newS);
+        equationRepository.save(newE);
+*/
         //bd.delete(1000004);
+/*
         Equation newE = new Equation(3.7760001, 2.222, 3.333);
-        Equation dbE = equationRepository.getByParams(newE.getParamA(), newE.getParamB(), newE.getParamC());
+        Equation dbE = equationRepository.checkExists(newE.getParamA(), newE.getParamB(), newE.getParamC());
         if (null == dbE) {
             System.out.println(equationRepository.save(newE));
         }
         for (Equation eq : equationRepository.getAll()) System.out.println(eq);
+*/
 
     }
 }
