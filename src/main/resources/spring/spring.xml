@@ -16,7 +16,11 @@
 
 >
 
-    <bean id="a" class="model.BaseEntity"/>
+    <!--support any action (CRUD etc.) in transaction-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--add all beans to ctx from "DAO" layer-->
+    <context:component-scan base-package="dao"/>
 
     <context:property-placeholder location="classpath:db/db.properties"/>
 
@@ -51,5 +55,6 @@
     <!--transaction manager for a single JPA EntityManagerFactory-->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
           p:entityManagerFactory-ref="entityManagerFactory"/>
+
 
 </beans>
