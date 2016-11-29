@@ -19,8 +19,11 @@
     <!--support any action (CRUD etc.) in transaction-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <!--add all beans to ctx from "DAO" layer-->
-    <context:component-scan base-package="dao"/>
+    <!--add all beans to ctx from "repository" layer-->
+    <context:component-scan base-package="layers.repository"/>
+
+    <!--add all beans to ctx from "service" layer-->
+    <context:component-scan base-package="layers.service"/>
 
     <context:property-placeholder location="classpath:db/db.properties"/>
 
