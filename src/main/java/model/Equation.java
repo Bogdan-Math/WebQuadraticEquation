@@ -11,6 +11,10 @@ import javax.persistence.*;
 @Table(name = "equation")
 public class Equation extends BaseEntity {
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "solution_id")
+    private Solution solution;
+
     @Column(name = "param_a")
     private double paramA;
 
@@ -19,12 +23,6 @@ public class Equation extends BaseEntity {
 
     @Column(name = "param_c")
     private double paramC;
-
-    @Column(name = "x_1")
-    private Double x1;
-
-    @Column(name = "x_2")
-    private Double x2;
 
     @Column(name = "has_natural_solution")
     private Boolean has_natural_solution;
@@ -41,11 +39,10 @@ public class Equation extends BaseEntity {
     @Override
     public String toString() {
         return "Equation{" +
-                "paramA=" + paramA +
+                "solution=" + solution +
+                ", paramA=" + paramA +
                 ", paramB=" + paramB +
                 ", paramC=" + paramC +
-                ", x1=" + x1 +
-                ", x2=" + x2 +
                 ", has_natural_solution=" + has_natural_solution +
                 '}';
     }
