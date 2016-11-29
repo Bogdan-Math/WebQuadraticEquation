@@ -26,7 +26,7 @@ public class EquationRepositoryImpl implements EquationRepository {
     }
 
     @Override
-    public Equation getByParams(float a, float b, float c) {
+    public Equation getByParams(double a, double b, double c) {
         try {
             return entityManager
                     .createQuery("SELECT e FROM Equation e WHERE e.paramA=:a AND e.paramB=:b AND e.paramC=:c", Equation.class)

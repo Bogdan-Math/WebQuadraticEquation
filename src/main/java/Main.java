@@ -1,24 +1,39 @@
-import model.BaseEntity;
+import layers.repository.EquationRepository;
+import layers.repository.EquationRepositoryImpl;
+import model.Equation;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        BaseEntity e = new BaseEntity(31.543f, 4322.65f, 76.990f);
-        System.out.println(e);
+
+        //getById one
+//        System.out.println(em.find(Equation.class, 1000005));
+
+        //getById all
+//        List<Equation> bes = em.createQuery("SELECT be FROM Equation be", Equation.class).getResultList();
+//        for (Equation be : bes) System.out.println(be);
+
+        //
+
+        new Main().methods();
+    }
+
+    public void methods() {
 
         ClassPathXmlApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring.xml");
         for (String bean : appCtx.getBeanDefinitionNames())
-        System.out.println(bean);
+            System.out.println(bean);
 
-        EntityManagerFactory emf = appCtx.getBean(EntityManagerFactory.class);
-        EntityManager em = emf.createEntityManager();
+        EquationRepository equationRepository = appCtx.getBean(EquationRepository.class);
 
-        List<BaseEntity> bes = em.createQuery("SELECT be FROM BaseEntity be", BaseEntity.class).getResultList();
-        for (BaseEntity be : bes) System.out.println(be);
+        //bd.delete(1000004);
+        Equation newE = new Equation(3.7760001, 2.222, 3.333);
+        Equation dbE = equationRepository.getByParams(newE.getParamA(), newE.getParamB(), newE.getParamC());
+        if (null == dbE) {
+            System.out.println(equationRepository.save(newE));
+        }
+        for (Equation eq : equationRepository.getAll()) System.out.println(eq);
+
     }
 }

@@ -12,19 +12,19 @@ import javax.persistence.*;
 public class Equation extends BaseEntity {
 
     @Column(name = "param_a")
-    private float paramA;
+    private double paramA;
 
     @Column(name = "param_b")
-    private float paramB;
+    private double paramB;
 
     @Column(name = "param_c")
-    private float paramC;
+    private double paramC;
 
     @Column(name = "x_1")
-    private Float x1;
+    private Double x1;
 
     @Column(name = "x_2")
-    private Float x2;
+    private Double x2;
 
     @Column(name = "has_natural_solution")
     private Boolean has_natural_solution;
@@ -32,7 +32,7 @@ public class Equation extends BaseEntity {
     public Equation() {
     }
 
-    public Equation(float paramA, float paramB, float paramC) {
+    public Equation(double paramA, double paramB, double paramC) {
         this.paramA = paramA;
         this.paramB = paramB;
         this.paramC = paramC;
