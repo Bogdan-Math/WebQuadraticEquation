@@ -1,14 +1,14 @@
-package layers.repository;
+package layers.repository.equation;
 
 import model.Equation;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@org.springframework.stereotype.Repository
+@Repository
 @Transactional
 public class EquationRepositoryImpl implements EquationRepository {
 
@@ -25,8 +25,9 @@ public class EquationRepositoryImpl implements EquationRepository {
         return entityManager.find(Equation.class, entityId);
     }
 
+/*
     @Override
-    public Equation getByParams(double a, double b, double c) {
+    public boolean checkExists(Equation equation) {
         try {
             return entityManager
                     .createQuery("SELECT e FROM Equation e WHERE e.paramA=:a AND e.paramB=:b AND e.paramC=:c", Equation.class)
@@ -39,6 +40,7 @@ public class EquationRepositoryImpl implements EquationRepository {
             return null;
         }
     }
+*/
 
     @Override
     public Equation save(Equation entity) {
