@@ -1,4 +1,4 @@
-package layers.service;
+package layers.service.solver;
 
 import layers.repository.equation.EquationRepository;
 import layers.repository.solution.SolutionRepository;
@@ -14,7 +14,34 @@ import org.springframework.transaction.annotation.Transactional;
 @Setter
 @Service
 @Transactional
-public class EquationSolverService {
+public class EquationSolverService implements EquationSolver {
+
+    private Double discriminant;
+
+    @Override
+    public Double discriminant(Equation equation) {
+        if (null == this.discriminant) {
+            Double paramA = equation.getParamA();
+            Double paramB = equation.getParamB();
+            Double paramC = equation.getParamC();
+
+            this.discriminant = paramB * paramB - 4 * paramA * paramC;
+        }
+
+        return this.discriminant;
+    }
+
+    @Override
+    public Solution solve(Equation equation) throws DiscriminantException {
+        Double discriminant = discriminant(equation);
+
+        if (discriminant(equation) <= 0) throw new DiscriminantException(discriminant.toString());
+
+        Double x1 = ( - equation.getParamB() - Math.sqrt(discriminant) ) / (2 * equation.getParamA());
+        Double x2 = ( - equation.getParamB() + Math.sqrt(discriminant) ) / (2 * equation.getParamA());
+
+        return new Solution(x1, x2);
+    }
 
     @Autowired
     public EquationRepository equationRepository;
@@ -72,5 +99,4 @@ public class EquationSolverService {
         this.equation.setX2( - paramB + Math.sqrt(discriminant) );
 */
     }
-
 }

@@ -1,10 +1,10 @@
 import layers.repository.equation.EquationRepository;
 import layers.repository.solution.SolutionRepository;
-import layers.service.EquationSolverService;
+import layers.service.solver.DiscriminantException;
+import layers.service.solver.EquationSolver;
 import model.Equation;
 import model.Solution;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
 
 public class Main {
 
@@ -29,8 +29,12 @@ public class Main {
             System.out.println(bean);
 
 
-        EquationSolverService equationSolverService = appCtx.getBean(EquationSolverService.class);
-        equationSolverService.o();
+        EquationSolver equationSolverService = appCtx.getBean(EquationSolver.class);
+        try {
+            System.out.println(equationSolverService.solve(new Equation(1, 5.31, 2.1119)));
+        } catch (DiscriminantException e) {
+            System.out.println(e.getMessage());
+        }
 
         EquationRepository equationRepository = appCtx.getBean(EquationRepository.class);
         SolutionRepository solutionRepository = appCtx.getBean(SolutionRepository.class);
