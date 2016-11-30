@@ -25,8 +25,6 @@ CREATE TABLE equation
   param_b FLOAT DEFAULT 0,
   param_c FLOAT DEFAULT 0,
 
-  has_natural_solution BOOLEAN DEFAULT NULL,
-
   PRIMARY KEY (id),
   FOREIGN KEY (solution_id) REFERENCES solution(id) ON DELETE CASCADE
 );

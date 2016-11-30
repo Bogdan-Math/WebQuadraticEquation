@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,6 +13,7 @@ public abstract class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     private Integer id;
 
+    @JsonIgnore
     public boolean isNew() {
         return null == this.id;
     }

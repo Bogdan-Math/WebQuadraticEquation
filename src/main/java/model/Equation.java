@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ public class Equation extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "solution_id")
+    @JsonIgnore
     private Solution solution;
 
     @Column(name = "param_a")
@@ -23,9 +25,6 @@ public class Equation extends BaseEntity {
 
     @Column(name = "param_c")
     private double paramC;
-
-    @Column(name = "has_natural_solution")
-    private Boolean has_natural_solution;
 
     public Equation() {
     }
@@ -43,7 +42,6 @@ public class Equation extends BaseEntity {
                 ", paramA=" + paramA +
                 ", paramB=" + paramB +
                 ", paramC=" + paramC +
-                ", has_natural_solution=" + has_natural_solution +
                 '}';
     }
 }
