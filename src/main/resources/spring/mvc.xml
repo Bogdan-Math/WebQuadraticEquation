@@ -12,8 +12,8 @@
 >
 
 
-    <mvc:annotation-driven>
-    </mvc:annotation-driven>
+    <!--need to dispatching requests to Controllers-->
+    <mvc:annotation-driven/>
 
     <!--add all beans to ctx from "web (controller)" layer-->
     <context:component-scan base-package="layers.controllers"/>
