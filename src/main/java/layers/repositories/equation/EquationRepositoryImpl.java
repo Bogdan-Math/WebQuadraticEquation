@@ -1,4 +1,4 @@
-package layers.repository.equation;
+package layers.repositories.equation;
 
 import model.Equation;
 import org.springframework.stereotype.Repository;

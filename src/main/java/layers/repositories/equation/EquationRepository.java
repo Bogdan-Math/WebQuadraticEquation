@@ -1,6 +1,6 @@
-package layers.repository.equation;
+package layers.repositories.equation;
 
-import layers.repository.BaseRepository;
+import layers.repositories.BaseRepository;
 import model.Equation;
 
 public interface EquationRepository extends BaseRepository<Equation> {
