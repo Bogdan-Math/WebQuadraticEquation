@@ -38,11 +38,6 @@ public class SolutionRepositoryImpl implements SolutionRepository{
     }
 
     @Override
-    public Solution get(int entityId) {
-        return entityManager.find(Solution.class, entityId);
-    }
-
-    @Override
     public Solution get(Solution entity) {
         try {
             return entityManager
@@ -56,8 +51,4 @@ public class SolutionRepositoryImpl implements SolutionRepository{
         }
     }
 
-    @Override
-    public void delete(int entityId) {
-        entityManager.createQuery("DELETE FROM Solution s WHERE s.id=:id").setParameter("id", entityId).executeUpdate();
-    }
 }

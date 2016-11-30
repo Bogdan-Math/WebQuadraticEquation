@@ -22,11 +22,6 @@ public class EquationRepositoryImpl implements EquationRepository {
     }
 
     @Override
-    public Equation get(int entityId) {
-        return entityManager.find(Equation.class, entityId);
-    }
-
-    @Override
     public Equation get(Equation entity) {
         try {
             return entityManager
@@ -57,8 +52,4 @@ public class EquationRepositoryImpl implements EquationRepository {
         }
     }
 
-    @Override
-    public void delete(int entityId) {
-        entityManager.createQuery("DELETE FROM Equation e WHERE e.id=:id").setParameter("id", entityId).executeUpdate();
-    }
 }

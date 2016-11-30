@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class EquationHandlerServiceImpl implements EquationHandlerService{
 
     @Autowired
-    public EquationRepository equationRepository;
+    private EquationRepository equationRepository;
 
     @Autowired
-    public SolutionRepository solutionRepository;
+    private SolutionRepository solutionRepository;
 
     @Autowired
-    public EquationSolver equationSolver;
+    private EquationSolver equationSolver;
 
     @Override
     public void process(Equation equation) {
@@ -32,12 +32,10 @@ public class EquationHandlerServiceImpl implements EquationHandlerService{
             System.out.println(e.getMessage());
             equation.setSolution(null);
         }
-        finally {
-            smartSave(equation, equation.getSolution());
-        }
     }
 
-    private void smartSave(Equation equation, Solution solution) {
+    @Override
+    public void smartSave(Equation equation, Solution solution) {
 
         if (!equationRepository.contains(equation)) {
             if (!solutionRepository.contains(solution)) {

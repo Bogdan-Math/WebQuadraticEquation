@@ -15,8 +15,4 @@ public abstract class BaseEntity implements Serializable {
         return null == this.id;
     }
 
-    @Override
-    public String toString() {
-        return id.toString() + ": ";
-    }
 }
