@@ -1,4 +1,4 @@
-package layers.service.solver;
+package layers.services.solver;
 
 public class DiscriminantException extends Exception{
 
