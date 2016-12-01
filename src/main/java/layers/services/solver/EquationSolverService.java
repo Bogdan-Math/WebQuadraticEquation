@@ -1,13 +1,9 @@
 package layers.services.solver;
 
-import lombok.Getter;
-import lombok.Setter;
 import model.Equation;
 import model.Solution;
 import org.springframework.stereotype.Service;
 
-@Getter
-@Setter
 @Service
 public class EquationSolverService implements EquationSolver {
 

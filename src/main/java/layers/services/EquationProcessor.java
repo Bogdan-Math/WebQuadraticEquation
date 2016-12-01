@@ -3,7 +3,6 @@ package layers.services;
 import model.Equation;
 import model.Solution;
 
-public interface EquationHandlerService {
+public interface EquationProcessor {
     void process(Equation equation);
-    void smartSave(Equation equation, Solution solution);
 }

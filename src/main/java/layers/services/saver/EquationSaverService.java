@@ -1,9 +1,7 @@
-package layers.services;
+package layers.services.saver;
 
 import layers.repositories.equation.EquationRepository;
 import layers.repositories.solution.SolutionRepository;
-import layers.services.solver.DiscriminantException;
-import layers.services.solver.EquationSolver;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class EquationHandlerServiceImpl implements EquationHandlerService{
+public class EquationSaverService implements EquationSaver {
 
     @Autowired
     private EquationRepository equationRepository;
@@ -20,22 +18,9 @@ public class EquationHandlerServiceImpl implements EquationHandlerService{
     @Autowired
     private SolutionRepository solutionRepository;
 
-    @Autowired
-    private EquationSolver equationSolver;
-
     @Override
-    public void process(Equation equation) {
-        try {
-            equationSolver.solve(equation);
-        }
-        catch (DiscriminantException e) {
-            System.out.println(e.getMessage());
-            equation.setSolution(null);
-        }
-    }
-
-    @Override
-    public void smartSave(Equation equation, Solution solution) {
+    public void smartSave(Equation equation) {
+        Solution solution = equation.getSolution();
 
         if (!equationRepository.contains(equation)) {
             if (!solutionRepository.contains(solution)) {

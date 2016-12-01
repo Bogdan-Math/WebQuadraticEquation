@@ -1,6 +1,6 @@
 import layers.repositories.equation.EquationRepository;
 import layers.repositories.solution.SolutionRepository;
-import layers.services.EquationHandlerService;
+import layers.services.EquationProcessor;
 import model.Equation;
 import model.Solution;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,11 +17,13 @@ public class Main {
         for (String bean : appCtx.getBeanDefinitionNames())
             System.out.println(bean);
 
-        EquationHandlerService bean = appCtx.getBean(EquationHandlerService.class);
+        EquationProcessor bean = appCtx.getBean(EquationProcessor.class);
         Equation equation = new Equation(1.111222, 54.1311, 62);
 
+/*
         bean.process(equation);
         bean.smartSave(equation, equation.getSolution());
+*/
 
         EquationRepository equationRepository = appCtx.getBean(EquationRepository.class);
         SolutionRepository solutionRepository = appCtx.getBean(SolutionRepository.class);
