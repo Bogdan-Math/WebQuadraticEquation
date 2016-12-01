@@ -18,9 +18,7 @@ public class EquationJsonController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Solution calc(@RequestBody Equation equation) {
-
         equationHandler.handle(equation);
-        System.out.println(equation);
         return equation.getSolution();
     }
 

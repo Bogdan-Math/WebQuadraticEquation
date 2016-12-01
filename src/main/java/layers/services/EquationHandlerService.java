@@ -4,7 +4,6 @@ import layers.services.saver.EquationSaver;
 import layers.services.solver.DiscriminantException;
 import layers.services.solver.EquationSolver;
 import model.Equation;
-import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

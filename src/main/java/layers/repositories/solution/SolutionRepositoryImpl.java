@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Repository
 @Transactional
@@ -19,11 +18,6 @@ public class SolutionRepositoryImpl implements SolutionRepository{
     @Override
     public boolean contains(Solution entity) {
         return null != this.get(entity);
-    }
-
-    @Override
-    public List<Solution> getAll() {
-        return entityManager.createQuery("SELECT s FROM Solution s", Solution.class).getResultList();
     }
 
     @Override

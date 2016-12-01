@@ -22,9 +22,6 @@
     <!-- uses WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
-    <!--all resources inside folder src/main/webapp/resources are mapped so they can be referred inside JSP file-->
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
-
     <!--all jsp inside folder src/main/webapp/WEB-INF are mapped so they can be referred to controller returned values-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"

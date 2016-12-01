@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Repository
 @Transactional
@@ -15,11 +14,6 @@ public class EquationRepositoryImpl implements EquationRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
-
-    @Override
-    public List<Equation> getAll() {
-        return entityManager.createQuery("SELECT e FROM Equation e", Equation.class).getResultList();
-    }
 
     @Override
     public Equation get(Equation entity) {
