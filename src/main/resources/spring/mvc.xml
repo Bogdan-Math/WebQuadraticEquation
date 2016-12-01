@@ -18,6 +18,10 @@
     <!--add all beans to ctx from "web (controller)" layer-->
     <context:component-scan base-package="layers.controllers"/>
 
+    <!--suppress SpringModelInspection -->
+    <!-- uses WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+
     <!--all resources inside folder src/main/webapp/resources are mapped so they can be referred inside JSP file-->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 

@@ -26,6 +26,7 @@
         <lombok.version>1.16.8</lombok.version>
         <servlet.version>2.5</servlet.version>
         <jackson-json.version>2.7.3</jackson-json.version>
+        <webjars-jquery.version>2.2.3</webjars-jquery.version>
 
     </properties>
 
@@ -113,6 +114,13 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-json.version}</version>
+        </dependency>
+
+        <!--JQuery - JS lib-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars-jquery.version}</version>
         </dependency>
 
     </dependencies>
