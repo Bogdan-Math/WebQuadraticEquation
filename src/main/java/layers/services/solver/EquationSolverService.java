@@ -7,30 +7,34 @@ import org.springframework.stereotype.Service;
 @Service
 public class EquationSolverService implements EquationSolver {
 
-    private Double discriminant;
-
     @Override
     public Double discriminant(Equation equation) {
-        if (null == this.discriminant) {
-            Double paramA = equation.getParamA();
-            Double paramB = equation.getParamB();
-            Double paramC = equation.getParamC();
+        Double paramA = equation.getParamA();
+        Double paramB = equation.getParamB();
+        Double paramC = equation.getParamC();
 
-            this.discriminant = paramB * paramB - 4 * paramA * paramC;
-        }
-
-        return this.discriminant;
+        return paramB * paramB - 4 * paramA * paramC;
     }
 
     @Override
     public void solve(Equation equation) throws DiscriminantException {
+        Double x1;
+        Double x2;
+
         Double discriminant = discriminant(equation);
 
-        if (discriminant(equation) <= 0) throw new DiscriminantException(discriminant.toString());
+        if (discriminant < 0) throw new DiscriminantException(discriminant.toString());
 
-        Double x1 = ( - equation.getParamB() - Math.sqrt(discriminant) ) / (2 * equation.getParamA());
-        Double x2 = ( - equation.getParamB() + Math.sqrt(discriminant) ) / (2 * equation.getParamA());
+        if (discriminant == 0) {
+            Double result = ( - equation.getParamB() ) / (2 * equation.getParamA());
+            equation.setSolution(new Solution(result, result));
+        }
 
-        equation.setSolution(new Solution(x1, x2));
+        if (discriminant > 0) {
+            x1 = ( - equation.getParamB() - Math.sqrt(discriminant) ) / (2 * equation.getParamA());
+            x2 = ( - equation.getParamB() + Math.sqrt(discriminant) ) / (2 * equation.getParamA());
+
+            equation.setSolution(new Solution(x1, x2));
+        }
     }
 }

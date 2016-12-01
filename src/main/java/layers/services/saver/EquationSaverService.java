@@ -23,7 +23,10 @@ public class EquationSaverService implements EquationSaver {
         Solution solution = equation.getSolution();
 
         if (!equationRepository.contains(equation)) {
-            if (!solutionRepository.contains(solution)) {
+            if (null == solution) {
+                equationRepository.save(equation);
+            }
+            else if (!solutionRepository.contains(solution)) {
                 equation.setSolution(solutionRepository.save(solution));
                 equationRepository.save(equation);
             }
