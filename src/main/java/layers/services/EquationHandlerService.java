@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EquationProcessorService implements EquationProcessor {
+public class EquationHandlerService implements EquationHandler {
 
     @Autowired
     private EquationSolver equationSolver;
@@ -17,7 +17,7 @@ public class EquationProcessorService implements EquationProcessor {
     private EquationSaver equationSaver;
 
     @Override
-    public void process(Equation equation) {
+    public void handle(Equation equation) {
         try {
             equationSolver.solve(equation);
         }
