@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = "solution")
-public class Solution extends BaseEntity{
+public class Solution extends BaseEntity {
 
     @Column(name = "x_1")
     private Double x1;

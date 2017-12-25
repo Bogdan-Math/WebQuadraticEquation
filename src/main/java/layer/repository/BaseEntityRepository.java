@@ -2,9 +2,10 @@ package layer.repository;
 
 import model.BaseEntity;
 
-public interface BaseRepository<E extends BaseEntity> {
-    E save(E entity);
+public interface BaseEntityRepository<E extends BaseEntity> {
+
     E get(E entity);
 
     boolean contains(E entity);
+    E save(E entity);
 }

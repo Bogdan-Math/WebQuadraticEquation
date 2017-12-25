@@ -1,7 +1,6 @@
 package layer.service.saver;
 
-import layer.repository.equation.EquationRepository;
-import layer.repository.solution.SolutionRepository;
+import layer.repository.BaseEntityRepository;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class EquationSaverService implements EquationSaver {
 
     @Autowired
-    private EquationRepository equationRepository;
+    private BaseEntityRepository<Equation> equationRepository;
 
     @Autowired
-    private SolutionRepository solutionRepository;
+    private BaseEntityRepository<Solution> solutionRepository;
 
     @Async
     @Transactional
