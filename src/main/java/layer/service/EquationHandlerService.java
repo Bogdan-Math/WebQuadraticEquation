@@ -1,8 +1,8 @@
-package layers.services;
+package layer.service;
 
-import layers.services.saver.EquationSaver;
-import layers.services.solver.DiscriminantException;
-import layers.services.solver.EquationSolver;
+import layer.service.saver.EquationSaver;
+import layer.service.solver.DiscriminantException;
+import layer.service.solver.EquationSolver;
 import model.Equation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class EquationHandlerService implements EquationHandler {
             System.out.println(e.getMessage());
         }
         finally {
-            equationSaver.smartSave(equation);
+            equationSaver.save(equation);
         }
     }
 

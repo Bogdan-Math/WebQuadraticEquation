@@ -1,4 +1,4 @@
-package layers.repositories;
+package layer.repository;
 
 import model.BaseEntity;
 

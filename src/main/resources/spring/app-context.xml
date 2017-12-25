@@ -17,10 +17,10 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--add all beans to ctx from "repositories" layer-->
-    <context:component-scan base-package="layers.repositories"/>
+    <context:component-scan base-package="layer.repository"/>
 
     <!--add all beans to ctx from "services" layer-->
-    <context:component-scan base-package="layers.services"/>
+    <context:component-scan base-package="layer.service"/>
 
     <context:property-placeholder location="classpath:db/db.properties"/>
 

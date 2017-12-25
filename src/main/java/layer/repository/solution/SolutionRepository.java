@@ -1,6 +1,6 @@
-package layers.repositories.solution;
+package layer.repository.solution;
 
-import layers.repositories.BaseRepository;
+import layer.repository.BaseRepository;
 import model.Solution;
 
 public interface SolutionRepository extends BaseRepository<Solution> {

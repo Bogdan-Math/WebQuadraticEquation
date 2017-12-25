@@ -1,6 +1,6 @@
-package layers.controllers;
+package layer.controller;
 
-import layers.services.EquationHandler;
+import layer.service.EquationHandler;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class EquationJsonController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Solution calc(@RequestBody Equation equation) {
+    public Solution solve(@RequestBody Equation equation) {
         equationHandler.handle(equation);
         return equation.getSolution();
     }

@@ -1,7 +1,7 @@
-package layers.services.saver;
+package layer.service.saver;
 
-import layers.repositories.equation.EquationRepository;
-import layers.repositories.solution.SolutionRepository;
+import layer.repository.equation.EquationRepository;
+import layer.repository.solution.SolutionRepository;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class EquationSaverService implements EquationSaver {
     private SolutionRepository solutionRepository;
 
     @Override
-    public void smartSave(Equation equation) {
+    public void save(Equation equation) {
         Solution solution = equation.getSolution();
 
         if (!equationRepository.contains(equation)) {

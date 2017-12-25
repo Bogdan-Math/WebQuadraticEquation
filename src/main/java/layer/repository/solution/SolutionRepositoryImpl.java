@@ -1,4 +1,4 @@
-package layers.repositories.solution;
+package layer.repository.solution;
 
 import model.Solution;
 import org.springframework.stereotype.Repository;
