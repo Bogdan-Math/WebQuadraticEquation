@@ -33,6 +33,10 @@
         <property name="password" value="${postgres.password}"/>
     </bean>
 
+    <!--transaction manager for a single JPA EntityManagerFactory-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+          p:entityManagerFactory-ref="entityManagerFactory"/>
+
     <!--create EntityManagerFactory - main class to work with db by JPQL (JPA)-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="packagesToScan" value="model"/>
@@ -42,10 +46,5 @@
 
     <!--inject implementation (Hibernate) in JPA-->
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-
-    <!--transaction manager for a single JPA EntityManagerFactory-->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-          p:entityManagerFactory-ref="entityManagerFactory"/>
-
 
 </beans>
