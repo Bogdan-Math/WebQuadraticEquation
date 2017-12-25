@@ -34,14 +34,4 @@ public class Equation extends BaseEntity {
         this.paramB = paramB;
         this.paramC = paramC;
     }
-
-    @Override
-    public String toString() {
-        return "Equation{" +
-                "solution=" + solution +
-                ", paramA=" + paramA +
-                ", paramB=" + paramB +
-                ", paramC=" + paramC +
-                '}';
-    }
 }

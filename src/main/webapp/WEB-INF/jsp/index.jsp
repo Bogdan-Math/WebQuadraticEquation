@@ -35,7 +35,7 @@
                              $('#solution').text('Equation has ONE solution:' + 'x1 = ' + data.x1);
                          }
                          else {
-                             $('#solution').text('Equation has TWO solutions:' + 'x1 = ' + data.x1 + ',x2 = ' + data.x2);
+                             $('#solution').text('Equation has TWO solutions:' + 'x1 = ' + data.x1 + ', x2 = ' + data.x2);
                          }
                      }
                     else {
@@ -43,7 +43,7 @@
                      }
                  },
                  error: function () {
-                 alert('Oops, something WRONG happened. :(');
+                     alert('Oops, something WRONG happened. :(');
                  }
                  });
 
