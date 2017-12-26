@@ -5,7 +5,7 @@ import model.Equation;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EquationRepository extends AbstractBaseEntityRepository<Equation> {
+class EquationRepository extends AbstractBaseEntityRepository<Equation> {
 
     protected Equation uncheckedGet(Equation entity) {
         return entityManager

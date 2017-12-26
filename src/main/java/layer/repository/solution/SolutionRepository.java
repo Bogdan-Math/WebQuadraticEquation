@@ -5,7 +5,7 @@ import model.Solution;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SolutionRepository extends AbstractBaseEntityRepository<Solution> {
+class SolutionRepository extends AbstractBaseEntityRepository<Solution> {
 
     protected Solution uncheckedGet(Solution entity) {
         return entityManager
