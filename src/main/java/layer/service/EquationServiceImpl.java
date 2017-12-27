@@ -23,7 +23,6 @@ public class EquationServiceImpl implements EquationService {
     @Autowired
     private BaseEntityRepository<Solution> solutionRepository;
 
-    @Transactional
     @Override//TODO: add logging
     public void solve(Equation equation) {
         equationSolver.solve(equation);

@@ -29,19 +29,29 @@
                  'paramB': param_b,
                  'paramC': param_c
                  }),
-                 success: function (data) {
-                     if (data) {
-                         if (data.x1 === data.x2) {
-                             $('#solution').text('Equation has ONE solution:' + 'x1 = ' + data.x1);
+
+                 success: function (solutions) {
+                     if (solutions) {
+
+                         solutions = solutions.map(function (solution) {
+                             return solution.x;
+                         });
+
+                         var x1 = solutions[0],
+                             x2 = solutions[1];
+
+                         if (solutions.length === 1) {
+                             $('#solution').text('Equation has ONE solution:' + 'x = ' + x1);
                          }
                          else {
-                             $('#solution').text('Equation has TWO solutions:' + 'x1 = ' + data.x1 + ', x2 = ' + data.x2);
+                             $('#solution').text('Equation has TWO solutions:' + 'x1 = ' + x1 + ', x2 = ' + x2);
                          }
                      }
                     else {
                          $('#solution').text('DISCRIMINANT less then zero! Equation has no result in natural numbers!');
                      }
                  },
+
                  error: function () {
                      alert('Oops, something WRONG happened. :(');
                  }
