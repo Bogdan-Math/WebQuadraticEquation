@@ -1,7 +1,6 @@
 package layer.controller;
 
-import layer.service.saver.EquationSaver;
-import layer.service.solver.EquationSolver;
+import layer.service.EquationService;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +16,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EquationController {
 
     @Autowired
-    private EquationSolver solver;
-
-    @Autowired
-    private EquationSaver saver;
+    private EquationService equationService;
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public Solution solve(@RequestBody Equation equation) {
-        solver.solve(equation);
-        saver.save(equation);
+        equationService.solve(equation);
+        equationService.save(equation);
         return equation.getSolution();
     }
 

@@ -2,10 +2,10 @@ package layer.service.solver;
 
 import model.Equation;
 import model.Solution;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public class EquationSolverService implements EquationSolver {
+@Component
+public class EquationSolverComponent implements EquationSolver {
 
     @Override
     public void solve(Equation equation) {
