@@ -26,12 +26,7 @@ public class Equation extends BaseEntity {
     @Column(name = "param_c")
     private double paramC;
 
-    public Equation() {
-    }
-
-    public Equation(double paramA, double paramB, double paramC) {
-        this.paramA = paramA;
-        this.paramB = paramB;
-        this.paramC = paramC;
+    public Solution safeSolution() {
+        return solution != null ? solution : new Solution();
     }
 }

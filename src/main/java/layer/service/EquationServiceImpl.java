@@ -30,10 +30,10 @@ public class EquationServiceImpl implements EquationService {
     @Transactional
     @Override//TODO: add logging
     public void save(Equation equation) {
-        Solution solution = equation.getSolution();
+        Solution solution = equation.safeSolution();
 
         if (!equationRepository.contains(equation)) {
-            if (null == solution) {
+            if (solution.isEmpty()) {
                 equationRepository.save(equation);
             }
             else if (!solutionRepository.contains(solution)) {

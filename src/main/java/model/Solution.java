@@ -26,4 +26,8 @@ public class Solution extends BaseEntity {
         this.x1 = x1;
         this.x2 = x2;
     }
+
+    public boolean isEmpty() {
+        return x1 == null && x2 == null;
+    }
 }
