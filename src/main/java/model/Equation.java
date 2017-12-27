@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -12,10 +14,12 @@ import javax.persistence.*;
 @Table(name = "equation")
 public class Equation extends BaseEntity {
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "solution_id")
+    @ManyToMany
+    @JoinTable(name = "equation_solution",
+               joinColumns = {@JoinColumn(name = "equation_id")},
+               inverseJoinColumns = {@JoinColumn(name = "solution_id")})
     @JsonIgnore
-    private Solution solution;
+    private Set<Solution> solutions;
 
     @Column(name = "param_a")
     private double paramA;
@@ -26,7 +30,7 @@ public class Equation extends BaseEntity {
     @Column(name = "param_c")
     private double paramC;
 
-    public Solution safeSolution() {
-        return solution != null ? solution : new Solution();
+    public Set<Solution> safeSolutions() {
+        return solutions != null ? solutions : new HashSet<Solution>();
     }
 }

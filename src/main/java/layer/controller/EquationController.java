@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Set;
+
 @Controller
 @RequestMapping(value = "/equation")
 public class EquationController {
@@ -22,10 +24,10 @@ public class EquationController {
     @RequestMapping(method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Solution solve(@RequestBody Equation equation) {
+    public Set<Solution> solve(@RequestBody Equation equation) {
         equationService.solve(equation);
         equationService.save(equation);
-        return equation.getSolution();
+        return equation.getSolutions();
     }
 
 }

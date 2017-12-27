@@ -1,33 +1,29 @@
 package model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Getter
-@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "solution")
 public class Solution extends BaseEntity {
 
-    @Column(name = "x_1")
-    private Double x1;
+/*
+    @ManyToMany(mappedBy = "solutions")
+    private Set<Equation> equations;
+*/
 
-    @Column(name = "x_2")
-    private Double x2;
+    @Getter
+    @Setter
+    @Column(name = "x")
+    private Double x;
 
-    public Solution() {
-    }
-
-    public Solution(double x1, double x2) {
-        this.x1 = x1;
-        this.x2 = x2;
-    }
-
-    public boolean isEmpty() {
-        return x1 == null && x2 == null;
+    public Solution(Double x) {
+        this.x = x;
     }
 }

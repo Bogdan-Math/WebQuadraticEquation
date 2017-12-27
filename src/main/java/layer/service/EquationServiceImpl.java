@@ -9,6 +9,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 @Service
 public class EquationServiceImpl implements EquationService {
 
@@ -21,6 +23,7 @@ public class EquationServiceImpl implements EquationService {
     @Autowired
     private BaseEntityRepository<Solution> solutionRepository;
 
+    @Transactional
     @Override//TODO: add logging
     public void solve(Equation equation) {
         equationSolver.solve(equation);
@@ -30,20 +33,17 @@ public class EquationServiceImpl implements EquationService {
     @Transactional
     @Override//TODO: add logging
     public void save(Equation equation) {
-        Solution solution = equation.safeSolution();
+        Set<Solution> solutions = equation.safeSolutions();
 
         if (!equationRepository.contains(equation)) {
-            if (solution.isEmpty()) {
-                equationRepository.save(equation);
+            for (Solution solution : solutions) {
+                if (!solutionRepository.contains(solution)) {
+                    solution.setId(solutionRepository.save(solution).getId());
+                } else {
+                    solution.setId(solutionRepository.get(solution).getId());
+                }
             }
-            else if (!solutionRepository.contains(solution)) {
-                equation.setSolution(solutionRepository.save(solution));
-                equationRepository.save(equation);
-            }
-            else {
-                equation.setSolution(solutionRepository.get(solution));
-                equationRepository.save(equation);
-            }
+            equationRepository.save(equation);
         }
 
     }

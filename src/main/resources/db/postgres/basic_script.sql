@@ -4,27 +4,36 @@ CREATE SEQUENCE global_sequence START 1000000;
 
 /*init solution table*/
 DROP TABLE IF EXISTS solution CASCADE;
-CREATE TABLE solution
-(
+CREATE TABLE solution(
+
   id INTEGER DEFAULT nextval('global_sequence'),
 
-  x_1 FLOAT DEFAULT NULL,
-  x_2 FLOAT DEFAULT NULL,
+  x FLOAT DEFAULT NULL,
 
   PRIMARY KEY (id)
 );
 
 /*init equation table*/
 DROP TABLE IF EXISTS equation CASCADE;
-CREATE TABLE equation
-(
-  id          INTEGER DEFAULT nextval('global_sequence'),
-  solution_id INTEGER,
+CREATE TABLE equation(
+
+  id INTEGER DEFAULT nextval('global_sequence'),
 
   param_a FLOAT DEFAULT 0,
   param_b FLOAT DEFAULT 0,
   param_c FLOAT DEFAULT 0,
 
-  PRIMARY KEY (id),
-  FOREIGN KEY (solution_id) REFERENCES solution(id) ON DELETE CASCADE
+  PRIMARY KEY (id)
+);
+
+/*init equation_solution table*/
+DROP TABLE IF EXISTS equation_solution CASCADE;
+CREATE TABLE equation_solution(
+
+  equation_id INTEGER,
+  solution_id INTEGER,
+
+  FOREIGN KEY (equation_id) REFERENCES equation(id),
+  FOREIGN KEY (solution_id) REFERENCES solution(id)
+
 );
