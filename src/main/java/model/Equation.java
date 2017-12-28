@@ -8,8 +8,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "equation")
 public class Equation extends BaseEntity {
@@ -21,16 +19,29 @@ public class Equation extends BaseEntity {
     @JsonIgnore
     private Set<Solution> solutions;
 
+    @Getter
+    @Setter
     @Column(name = "param_a")
     private double paramA;
 
+    @Getter
+    @Setter
     @Column(name = "param_b")
     private double paramB;
 
+    @Getter
+    @Setter
     @Column(name = "param_c")
     private double paramC;
 
-    public Set<Solution> safeSolutions() {
-        return solutions != null ? solutions : new HashSet<Solution>();
+    public Set<Solution> solutions() {
+        if (solutions == null) solutions = new HashSet<>();
+        return solutions;
+    }
+
+    public void addSolutions(Double... newSolutions) {
+        for (Double x : newSolutions) {
+            solutions().add(new Solution(x));
+        }
     }
 }

@@ -32,7 +32,7 @@ public class EquationServiceImpl implements EquationService {
     @Transactional
     @Override//TODO: add logging
     public void save(Equation equation) {
-        Set<Solution> solutions = equation.safeSolutions();
+        Set<Solution> solutions = equation.solutions();
 
         if (!equationRepository.contains(equation)) {
             for (Solution solution : solutions) {

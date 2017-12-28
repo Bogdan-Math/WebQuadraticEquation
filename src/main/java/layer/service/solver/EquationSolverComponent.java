@@ -1,10 +1,7 @@
 package layer.service.solver;
 
 import model.Equation;
-import model.Solution;
 import org.springframework.stereotype.Component;
-
-import java.util.HashSet;
 
 @Component
 public class EquationSolverComponent implements EquationSolver {
@@ -18,19 +15,13 @@ public class EquationSolverComponent implements EquationSolver {
 
         if (discriminant == 0) {
             final Double x = ( - equation.getParamB() ) / (2 * equation.getParamA());
-            equation.setSolutions(new HashSet<Solution>() {{
-                add(new Solution(x));
-            }});
+            equation.addSolutions(x);
         }
 
         if (discriminant > 0) {
             final Double x1 = ( - equation.getParamB() - Math.sqrt(discriminant) ) / (2 * equation.getParamA() );
             final Double x2 = ( - equation.getParamB() + Math.sqrt(discriminant) ) / (2 * equation.getParamA() );
-
-            equation.setSolutions(new HashSet<Solution>() {{
-                add(new Solution(x1));
-                add(new Solution(x2));
-            }});
+            equation.addSolutions(x1, x2);
         }
     }
 

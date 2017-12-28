@@ -27,7 +27,7 @@ public class EquationController {
     public Set<Solution> solve(@RequestBody Equation equation) {
         equationService.solve(equation);
         equationService.save(equation);
-        return equation.getSolutions();
+        return equation.solutions();
     }
 
 }
