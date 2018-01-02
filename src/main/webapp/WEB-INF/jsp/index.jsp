@@ -23,7 +23,11 @@
     <%--JQuery SCRIPTS--%>
     <script type="text/javascript" src="webjars/jquery/2.2.3/jquery.min.js"></script>
 
-    <%--Custom STYLES--%>
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+
+<%--Custom STYLES--%>
     <style>
         input {
             text-align: right;
@@ -73,12 +77,28 @@
         </div>
     </div>
 </div>
+<div id="solved-alert" class="alert alert-success .alert-dismissible" role="alert" style="display:none;">
+<%--
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+--%>
+    <strong>Well done!</strong> You successfully read this important alert message.
+</div>
 
 <script>
 
     $(document).ready(function () {
 
+
         $('#solve').on('click', function () {
+            $.bootstrapGrowl("Danger, Danger!", {
+                type: 'danger',
+                align: 'center',
+                width: '400',
+                allow_dismiss: true,
+                delay: -1
+            });
 
             var param_a = $('#param_a').val(),
                 param_b = $('#param_b').val(),
@@ -120,10 +140,17 @@
                     } else {
                         $('#solution').text('DISCRIMINANT less then zero! Equation has no result in natural numbers!');
                     }
+                    $.bootstrapGrowl('We do have the Kapua suite available.', {
+                        type: 'success',
+                        delay: 3000
+                    });
                 },
 
                 error: function () {
-                    alert('Oops, something WRONG happened. :(');
+                    $.bootstrapGrowl('Oops, something WRONG happened. :(', {
+                        type: 'danger',
+                        delay: 3000
+                    });
                 }
             });
         })
