@@ -68,8 +68,9 @@
                     </span>
                 </div>
             </div>
+            <a id="solve" href="#" class="btn btn-lg btn-outline-secondary">Solve it!</a>
+            <div id="solution"></div>
         </div>
-
     </div>
 </div>
 
@@ -77,7 +78,7 @@
 
     $(document).ready(function () {
 
-        $('#send').on('click', function () {
+        $('#solve').on('click', function () {
 
             var param_a = $('#param_a').val(),
                 param_b = $('#param_b').val(),
@@ -130,8 +131,6 @@
 
 </script>
 
-<div id="solution"></div>
-
-<button id="send">send</button>
 </body>
+
 </html>
