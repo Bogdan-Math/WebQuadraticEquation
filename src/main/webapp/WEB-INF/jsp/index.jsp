@@ -77,39 +77,32 @@
         </div>
     </div>
 </div>
-<div id="solved-alert" class="alert alert-success .alert-dismissible" role="alert" style="display:none;">
-<%--
-    <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-    </button>
---%>
-    <strong>Well done!</strong> You successfully read this important alert message.
-</div>
 
 <script>
 
     $(document).ready(function () {
 
+        var alert = function(text, type) {
+            $.bootstrapGrowl(text, {
+                type: type,
+                width: 750
+            });
+        };
 
         $('#solve').on('click', function () {
-            $.bootstrapGrowl("Danger, Danger!", {
-                type: 'danger',
-                align: 'center',
-                width: '400',
-                allow_dismiss: true,
-                delay: -1
-            });
 
             var param_a = $('#param_a').val(),
                 param_b = $('#param_b').val(),
                 param_c = $('#param_c').val();
 
-            if ($.isNumeric(param_a) && parseInt(param_a) === 0) {
-                alert('First parameter COULDN\'T be zero!!!'); return;
+            if (!($.isNumeric(param_a) && $.isNumeric(param_b) && $.isNumeric(param_c))) {
+                alert("<strong>a, b, c</strong> - parameters! They <strong>COULD NOT</strong> be empty, and <strong>SHOULD BE</strong> a number!",
+                    'info'); return;
             }
 
-            if (!($.isNumeric(param_a) && $.isNumeric(param_b) && $.isNumeric(param_c))) {
-                alert('Input only numbers!'); return;
+            if (parseInt(param_a) === 0) {
+                alert("First parameter <strong>COULD NOT</strong> be zero!",
+                    'info'); return;
             }
 
             $.ajax({
@@ -132,25 +125,27 @@
                         var oneSolution = solutions.length === 1,
                             twoSolutions = solutions.length === 2;
 
-                        if (oneSolution) $('#solution')
-                            .text('Equation has ONE solution:  ' + 'x = ' + solutions[0]);
-                        if (twoSolutions) $('#solution')
-                            .text('Equation has TWO solutions:  ' + 'x1 = ' + solutions[0] + ', ' +
-                                                                    'x2 = ' + solutions[1]);
+                        if (oneSolution)
+                            alert("Equation has <b>ONE</b> solution:" +
+                                "<br>" +
+                                "<b>x</b> = " + "<b>" + solutions[0] + "</b>",
+                                'success');
+                        if (twoSolutions)
+                            alert("Equation has <b>TWO</b> solutions:" +
+                                "<br>" +
+                                "<b>x1</b> = " + "<b>" + solutions[0] + "</b>" +
+                                "<br>" +
+                                "<b>x2</b> = " + "<b>" + solutions[1] + "</b>",
+                                'success');
                     } else {
-                        $('#solution').text('DISCRIMINANT less then zero! Equation has no result in natural numbers!');
+                        alert("<strong>DISCRIMINANT</strong> less then zero! Equation has no result in natural numbers!",
+                            'warning');
                     }
-                    $.bootstrapGrowl('We do have the Kapua suite available.', {
-                        type: 'success',
-                        delay: 3000
-                    });
                 },
 
                 error: function () {
-                    $.bootstrapGrowl('Oops, something WRONG happened. :(', {
-                        type: 'danger',
-                        delay: 3000
-                    });
+                    alert('Oops, something WRONG happened. :(',
+                        'danger');
                 }
             });
         })
