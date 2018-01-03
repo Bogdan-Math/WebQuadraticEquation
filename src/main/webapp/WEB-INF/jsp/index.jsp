@@ -9,6 +9,9 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
           crossorigin="anonymous">
 
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
     <%--Bootstrap SCRIPTS--%>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -22,12 +25,9 @@
 
     <%--JQuery SCRIPTS--%>
     <script type="text/javascript" src="webjars/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap-notify/3.1.3/bootstrap-notify.min.js"></script>
 
-
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
-
-<%--Custom STYLES--%>
+    <%--Custom STYLES--%>
     <style>
         input {
             text-align: right;
@@ -82,12 +82,40 @@
 
     $(document).ready(function () {
 
-        var alert = function(text, type) {
-            $.bootstrapGrowl(text, {
-                type: type,
-                width: 750
-            });
-        };
+        var alert = function(text) {
+                $.notify({message: text},
+                    {
+                        placement: {
+                            from : "bottom",
+                            align: "right"
+                        }
+                    }
+                );
+            },
+
+            infoAlert = function (text) {
+                alert(text, {type: 'info'});
+            },
+
+            warningAlert = function (text) {
+                alert(text, {type: 'warning'});
+            },
+
+            errorAlert = function(text) {
+                alert(text, {type: 'danger'});
+            },
+
+            successAlert = function(text) {
+                $.notify(text, {
+                    type : 'success',
+                    delay: -1,
+                    placement: {
+                        from : "bottom",
+                        align: "center"
+                    }
+                });
+            };
+
 
         $('#solve').on('click', function () {
 
@@ -96,13 +124,12 @@
                 param_c = $('#param_c').val();
 
             if (!($.isNumeric(param_a) && $.isNumeric(param_b) && $.isNumeric(param_c))) {
-                alert("<strong>a, b, c</strong> - parameters! They <strong>COULD NOT</strong> be empty, and <strong>SHOULD BE</strong> a number!",
-                    'info'); return;
+                infoAlert("<strong>a, b, c</strong> - parameters! " +
+                    "They <strong>COULD NOT</strong> be empty, and <strong>SHOULD BE</strong> a number!"); return;
             }
 
             if (parseInt(param_a) === 0) {
-                alert("First parameter <strong>COULD NOT</strong> be zero!",
-                    'info'); return;
+                infoAlert("First parameter <strong>COULD NOT</strong> be zero!"); return;
             }
 
             $.ajax({
@@ -122,30 +149,26 @@
                             return solution.x;
                         });
 
-                        var oneSolution = solutions.length === 1,
+                        var oneSolution  = solutions.length === 1,
                             twoSolutions = solutions.length === 2;
 
                         if (oneSolution)
-                            alert("Equation has <b>ONE</b> solution:" +
+                            successAlert("Equation has <b>ONE</b> solution:" +
                                 "<br>" +
-                                "<b>x</b> = " + "<b>" + solutions[0] + "</b>",
-                                'success');
+                                "<b>x</b> = " + "<b>" + solutions[0] + "</b>");
                         if (twoSolutions)
-                            alert("Equation has <b>TWO</b> solutions:" +
+                            successAlert("Equation has <b>TWO</b> solutions:" +
                                 "<br>" +
                                 "<b>x1</b> = " + "<b>" + solutions[0] + "</b>" +
                                 "<br>" +
-                                "<b>x2</b> = " + "<b>" + solutions[1] + "</b>",
-                                'success');
+                                "<b>x2</b> = " + "<b>" + solutions[1] + "</b>");
                     } else {
-                        alert("<strong>DISCRIMINANT</strong> less then zero! Equation has no result in natural numbers!",
-                            'warning');
+                        warningAlert("<strong>DISCRIMINANT</strong> less then zero! Equation has no result in natural numbers!");
                     }
                 },
 
                 error: function () {
-                    alert('Oops, something WRONG happened. :(',
-                        'danger');
+                    errorAlert('Oops, something WRONG happened. :(');
                 }
             });
         })
