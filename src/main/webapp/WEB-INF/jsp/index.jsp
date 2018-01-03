@@ -9,8 +9,13 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
           crossorigin="anonymous">
 
+    <%--notification ANIMATION--%>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <%--Custom STYLES--%>
+    <link rel="stylesheet"
+    href="${pageContext.request.contextPath}/resources/css/main.css">
 
     <%--Bootstrap SCRIPTS--%>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -23,16 +28,11 @@
             integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
             crossorigin="anonymous"></script>
 
-    <%--JQuery SCRIPTS--%>
+    <%--jQuery SCRIPTS--%>
     <script type="text/javascript" src="webjars/jquery/2.2.3/jquery.min.js"></script>
-    <script type="text/javascript" src="webjars/bootstrap-notify/3.1.3/bootstrap-notify.min.js"></script>
 
-    <%--Custom STYLES--%>
-    <style>
-        input {
-            text-align: right;
-        }
-    </style>
+    <%--notification SCRIPTS--%>
+    <script type="text/javascript" src="webjars/bootstrap-notify/3.1.3/bootstrap-notify.min.js"></script>
 
 </head>
 <body>
@@ -78,13 +78,20 @@
     </div>
 </div>
 
+<div class="container">
+    <div id="result" class="text-center">
+
+    </div>
+</div>
+
 <script>
 
     $(document).ready(function () {
 
-        var alert = function(text) {
+        var alert = function(text, type) {
                 $.notify({message: text},
                     {
+                        type: type,
                         placement: {
                             from : "bottom",
                             align: "right"
@@ -94,26 +101,19 @@
             },
 
             infoAlert = function (text) {
-                alert(text, {type: 'info'});
+                alert(text, 'info');
             },
 
             warningAlert = function (text) {
-                alert(text, {type: 'warning'});
+                alert(text, 'warning');
             },
 
             errorAlert = function(text) {
-                alert(text, {type: 'danger'});
+                alert(text, 'danger');
             },
 
             successAlert = function(text) {
-                $.notify(text, {
-                    type : 'success',
-                    delay: -1,
-                    placement: {
-                        from : "bottom",
-                        align: "center"
-                    }
-                });
+                alert(text, 'success');
             };
 
 
@@ -150,18 +150,35 @@
                         });
 
                         var oneSolution  = solutions.length === 1,
-                            twoSolutions = solutions.length === 2;
+                            twoSolutions = solutions.length === 2,
+                            x1 = solutions[0],
+                            x2 = solutions[1];
 
-                        if (oneSolution)
+                        if (oneSolution) {
+                            $('#result').html("" +
+                                "<math>" +
+                                "x<sub>1,2</sub>=" + x1 +
+                                "</math>");
                             successAlert("Equation has <b>ONE</b> solution:" +
                                 "<br>" +
-                                "<b>x</b> = " + "<b>" + solutions[0] + "</b>");
-                        if (twoSolutions)
+                                "<b>x</b> = " + "<b>" + x1 + "</b>");
+                        }
+
+                        if (twoSolutions) {
+                            $('#result').html("" +
+                                "<math>" +
+                                    "x<sub>1</sub>=" + x1 +
+                                "</math>" +
+                                "&nbsp;&nbsp;&nbsp;" +
+                                "<math>" +
+                                    "x<sub>2</sub>=" + x2 +
+                                "</math>");
                             successAlert("Equation has <b>TWO</b> solutions:" +
                                 "<br>" +
-                                "<b>x1</b> = " + "<b>" + solutions[0] + "</b>" +
+                                "<b>x1</b> = " + "<b>" + x1 + "</b>" +
                                 "<br>" +
-                                "<b>x2</b> = " + "<b>" + solutions[1] + "</b>");
+                                "<b>x2</b> = " + "<b>" + x2 + "</b>");
+                        }
                     } else {
                         warningAlert("<strong>DISCRIMINANT</strong> less then zero! Equation has no result in natural numbers!");
                     }
