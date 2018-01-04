@@ -31,18 +31,20 @@ public class EquationServiceImpl implements EquationService {
     @Async
     @Transactional
     @Override//TODO: add logging
-    public void save(Equation equation) {
-        Set<Solution> solutions = equation.solutions();
+    public void save(Equation incomeEquation) {
+        Equation checkedEquation = equationRepository.check(incomeEquation);
+        Set<Solution> solutions  = checkedEquation.solutions();
 
-        if (!equationRepository.contains(equation)) {
+        if (checkedEquation.isNew()) {
             for (Solution solution : solutions) {
-                if (!solutionRepository.contains(solution)) {
+                Solution checkedSolution = solutionRepository.check(solution);
+                if (checkedSolution.isNew()) {
                     solution.setId(solutionRepository.save(solution).getId());
                 } else {
-                    solution.setId(solutionRepository.get(solution).getId());
+                    solution.setId(checkedSolution.getId());
                 }
             }
-            equationRepository.save(equation);
+            equationRepository.save(incomeEquation);
         }
 
     }

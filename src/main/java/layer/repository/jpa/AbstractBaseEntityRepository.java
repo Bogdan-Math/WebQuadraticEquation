@@ -1,32 +1,28 @@
-package layer.repository;
+package layer.repository.jpa;
 
+import layer.repository.BaseEntityRepository;
 import model.BaseEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-public abstract class AbstractBaseEntityRepository<E extends BaseEntity> implements BaseEntityRepository<E> {
+abstract class AbstractBaseEntityRepository<E extends BaseEntity> implements BaseEntityRepository<E> {
 
     @PersistenceContext
-    protected EntityManager entityManager;
+    EntityManager entityManager;
 
     @Override
-    public E get(E entity) {
+    public E check(E entity) {
         try {
             return uncheckedGet(entity);
         } catch (NoResultException e) {
-            return null;
+            return entity;
         }
     }
 
 
-    protected abstract E uncheckedGet(E entity);
-
-    @Override
-    public boolean contains(E entity) {
-        return null != this.get(entity);
-    }
+    abstract E uncheckedGet(E entity);
 
     @Override
     public E save(E entity) {

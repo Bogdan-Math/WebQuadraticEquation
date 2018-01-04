@@ -4,8 +4,7 @@ import model.BaseEntity;
 
 public interface BaseEntityRepository<E extends BaseEntity> {
 
-    E get(E entity);
+    E check(E entity);
 
-    boolean contains(E entity);
     E save(E entity);
 }
