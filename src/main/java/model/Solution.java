@@ -23,7 +23,7 @@ public class Solution extends BaseEntity {
     @Column(name = "x")
     private Double x;
 
-    public Solution(Double x) {
+    Solution(Double x) {
         this.x = x;
     }
 }
