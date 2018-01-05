@@ -74,7 +74,7 @@
 
 <div class="container">
     <div id="result" class="text-center">
-        <%--place for result--%>
+        <div>&nbsp;</div>
     </div>
 </div>
 
@@ -124,10 +124,17 @@
                 legend: {
                     display: false
                 },
+                tooltips: {
+                    enabled: false
+                },
                 scales: {
                     xAxes: [{
                         type: 'linear'
+                    }],
+                    yAxes: [{
+                        type: 'linear'
                     }]
+
                 }
             }
         });
