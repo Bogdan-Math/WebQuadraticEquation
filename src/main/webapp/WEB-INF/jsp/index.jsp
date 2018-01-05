@@ -16,8 +16,8 @@
     href="${pageContext.request.contextPath}/resources/css/main.css">
 
     <%--Bootstrap SCRIPTS--%>
-    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="webjars/popper.js/1.11.1/dist/popper.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/popper.js/1.11.1/dist/umd/popper.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
     <%--notification SCRIPTS--%>
@@ -25,6 +25,8 @@
 
     <%--custom SCRIPTS--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
 </head>
 <body>
@@ -74,6 +76,62 @@
     <div id="result" class="text-center">
         <%--place for result--%>
     </div>
+</div>
+
+<div class="container">
+    <canvas id="myChart" width="900" height="600"></canvas>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    fill : false,
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: [
+                        {
+                            x: -3,
+                            y: 9
+                        },
+                        {
+                            x: -2,
+                            y: 4
+                        },
+                        {
+                            x: -1,
+                            y: 1
+                        },
+                        {
+                            x: 0,
+                            y: 0
+                        },
+                        {
+                            x: 1,
+                            y: 1
+                        },
+                        {
+                            x: 2,
+                            y: 4
+                        },
+                        {
+                            x: 3,
+                            y: 9
+                        }
+                    ]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'linear'
+                    }]
+                }
+            }
+        });
+    </script>
 </div>
 
 </body>

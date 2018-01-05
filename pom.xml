@@ -111,12 +111,7 @@
             <version>${jackson-json.version}</version>
         </dependency>
 
-        <!--jQuery + Bootstrap-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>${webjars-jquery.version}</version>
-        </dependency>
+        <!--jQuery + Bootstrap + Popper-->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
