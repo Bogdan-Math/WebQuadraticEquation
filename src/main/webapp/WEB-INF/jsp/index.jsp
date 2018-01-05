@@ -129,10 +129,20 @@
                 },
                 scales: {
                     xAxes: [{
-                        type: 'linear'
+                        display: true,
+                        type: 'linear',
+                        ticks: {
+                            suggestedMin: -4,
+                            suggestedMax: 4
+                        }
                     }],
                     yAxes: [{
-                        type: 'linear'
+                        display: true,
+                        type: 'linear',
+                        ticks: {
+                            suggestedMin: -1,
+                            suggestedMax: 10
+                        }
                     }]
 
                 }
