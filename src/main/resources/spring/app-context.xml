@@ -19,7 +19,8 @@
     <task:annotation-driven/>
 
     <!--support any action (CRUD etc.) in transaction-->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+    <tx:annotation-driven/>
 
     <!--add all beans to ctx from "repositories" layer-->
     <context:component-scan base-package="layer.repository"/>
