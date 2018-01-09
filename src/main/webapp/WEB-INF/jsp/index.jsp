@@ -24,7 +24,7 @@
     <script type="text/javascript" src="webjars/bootstrap-notify/3.1.3/bootstrap-notify.min.js"></script>
 
     <%--custom SCRIPTS--%>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Main.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Alert.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Constants.js"></script>
 

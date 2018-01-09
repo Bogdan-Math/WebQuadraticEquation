@@ -15,6 +15,7 @@ public abstract class BaseEntity implements Serializable {
     @Id
     @SequenceGenerator(name = "sequence", sequenceName = "global_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+    @JsonIgnore
     private Integer id;
 
     @JsonIgnore
