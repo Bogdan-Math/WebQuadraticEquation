@@ -69,7 +69,7 @@
                     </span>
                 </div>
             </div>
-            <a id="solve" href="#" class="btn btn-lg btn-outline-secondary">Solve it!</a>
+            <a id="solve" href="#" class="btn btn-lg btn-outline-secondary disabled">Solve it!</a>
             <div id="solution"></div>
         </div>
     </div>
