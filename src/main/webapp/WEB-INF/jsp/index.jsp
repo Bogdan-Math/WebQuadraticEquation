@@ -26,8 +26,10 @@
     <%--custom SCRIPTS--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Alert.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Constants.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/SolutionsRenderer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Request.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ResponseHandlers.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Validators.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
@@ -70,7 +72,6 @@
                 </div>
             </div>
             <a id="solve" href="#" class="btn btn-lg btn-outline-secondary disabled">Solve it!</a>
-            <div id="solution"></div>
         </div>
     </div>
 </div>
