@@ -1,10 +1,10 @@
-package layer.service.solver;
+package layer.service;
 
 import model.Equation;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EquationSolverComponent implements EquationSolver {
+class EquationSolverComponent implements EquationSolver {
 
     @Override
     public void solve(Equation equation) {

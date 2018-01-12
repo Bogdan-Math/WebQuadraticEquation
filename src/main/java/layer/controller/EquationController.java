@@ -5,29 +5,32 @@ import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
 
-@Controller
+import static java.util.stream.Collectors.toSet;
+
+@RestController
 @RequestMapping(value = "/equation")
 public class EquationController {
 
     @Autowired
     private EquationService equationService;
 
-    @ResponseBody
     @RequestMapping(method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Set<Solution> solve(@RequestBody Equation equation) {
+    public Set<Double> solve(@RequestBody Equation equation) {
         equationService.solve(equation);
         equationService.save(equation);
-        return equation.solutions();
+        return equation.solutions()
+                .stream()
+                .map(Solution::getX)
+                .collect(toSet());
     }
 
 }

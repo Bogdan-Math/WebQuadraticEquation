@@ -2,9 +2,6 @@ let handleSuccess = function (solutions) {
     let solutionsExists = solutions.length > 0;
 
     if (solutionsExists) {
-        solutions = solutions.map(function (solution) {
-            return solution.x;
-        });
 
         let oneSolution = solutions.length === 1,
             twoSolutions = solutions.length === 2,

@@ -1,7 +1,6 @@
 package layer.service;
 
 import layer.repository.BaseEntityRepository;
-import layer.service.solver.EquationSolver;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Set;
 
 @Service
-public class EquationServiceImpl implements EquationService {
+class EquationServiceInstance implements EquationService {
 
     @Autowired
     private EquationSolver equationSolver;
