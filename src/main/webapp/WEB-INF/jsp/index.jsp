@@ -25,11 +25,11 @@
 
     <%--custom SCRIPTS--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Alert.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Constants.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Constant.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Main.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Request.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ResponseHandlers.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Validators.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ResponseHandler.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Validator.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
