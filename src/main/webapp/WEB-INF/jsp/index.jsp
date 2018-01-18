@@ -85,71 +85,50 @@
 <div class="container">
     <canvas id="myChart" width="900" height="600"></canvas>
     <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                datasets: [{
-                    fill : false,
-                    borderColor: 'rgb(0, 0, 0)',
-                    data: [
-                        {
-                            x: -3,
-                            y: 9
-                        },
-                        {
-                            x: -2,
-                            y: 4
-                        },
-                        {
-                            x: -1,
-                            y: 1
-                        },
-                        {
-                            x: 0,
-                            y: 0
-                        },
-                        {
-                            x: 1,
-                            y: 1
-                        },
-                        {
-                            x: 2,
-                            y: 4
-                        },
-                        {
-                            x: 3,
-                            y: 9
-                        }
-                    ]
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
-                },
-                tooltips: {
-                    enabled: false
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        type: 'linear',
-                        ticks: {
-                            suggestedMin: -4,
-                            suggestedMax: 4
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        type: 'linear',
-                        ticks: {
-                            suggestedMin: -1,
-                            suggestedMax: 10
-                        }
-                    }]
+        let ctx = document.getElementById("myChart").getContext('2d');
 
-                }
+        $.ajax({
+        headers: {'Content-Type': 'application/json'},
+            type: 'POST',
+            url: 'chart',
+            success: function (result) {
+                let myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            fill: false,
+                            borderColor: 'rgb(0, 0, 0)',
+                            data: result
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            enabled: false
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                type: 'linear',
+                                ticks: {
+                                    suggestedMin: -4,
+                                    suggestedMax: 4
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                type: 'linear',
+                                ticks: {
+                                    suggestedMin: -1,
+                                    suggestedMax: 10
+                                }
+                            }]
+
+                        }
+                    }
+                });
             }
         });
     </script>

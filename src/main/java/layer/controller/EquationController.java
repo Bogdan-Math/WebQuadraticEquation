@@ -1,6 +1,8 @@
 package layer.controller;
 
 import layer.service.EquationService;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import model.Equation;
 import model.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +17,13 @@ import java.util.Set;
 import static java.util.stream.Collectors.toSet;
 
 @RestController
-@RequestMapping(value = "/equation")
 public class EquationController {
 
     @Autowired
     private EquationService equationService;
 
-    @RequestMapping(method = RequestMethod.POST,
+    @RequestMapping(value = "/equation",
+                    method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public Set<Double> solve(@RequestBody Equation equation) {
@@ -33,4 +35,22 @@ public class EquationController {
                 .collect(toSet());
     }
 
+    @RequestMapping(value = "/chart",
+                    method = RequestMethod.POST,
+                    produces = MediaType.APPLICATION_JSON_VALUE)
+    public El[] a() {
+        return new El[] {
+                new El(-3,9),
+                new El(-2,4),
+                new El(-1,1),
+                new El(0,0),
+                new El(1,1),
+                new El(2,4),
+                new El(3,9)
+        };
+    }
+
+    @Getter
+    @AllArgsConstructor
+    class El { int x; int y; }
 }
