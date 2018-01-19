@@ -91,14 +91,14 @@
         headers: {'Content-Type': 'application/json'},
             type: 'POST',
             url: 'chart',
-            success: function (result) {
-                let myChart = new Chart(ctx, {
+            success: function (points) {
+                new Chart(ctx, {
                     type: 'line',
                     data: {
                         datasets: [{
                             fill: false,
                             borderColor: 'rgb(0, 0, 0)',
-                            data: result
+                            data: points
                         }]
                     },
                     options: {
