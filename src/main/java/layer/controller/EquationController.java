@@ -21,7 +21,7 @@ public class EquationController {
     @Autowired
     private EquationService equationService;
 
-    @RequestMapping(method = RequestMethod.POST,
+    @RequestMapping(method   = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public Set<Double> solve(@RequestBody Equation equation) {

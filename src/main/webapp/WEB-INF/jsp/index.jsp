@@ -122,7 +122,7 @@
                                 type: 'linear',
                                 ticks: {
                                     suggestedMin: -1,
-                                    suggestedMax: 10
+                                    suggestedMax: 16
                                 }
                             }]
 
