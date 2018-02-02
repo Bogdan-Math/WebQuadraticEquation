@@ -1,6 +1,7 @@
 package layer.service.instance;
 
 import layer.service.ChartService;
+import model.Chart;
 import model.Point;
 import org.springframework.stereotype.Service;
 
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Service;
 class ChartServiceInstance implements ChartService {
 
     @Override
-    public Point[] getChartPoints() {
-        return new Point[] {
+    public Chart getChart() {
+        return new Chart(new Point[] {
                 new Point(-4,16),
                 new Point(-3,9),
                 new Point(-2,4),
@@ -19,6 +20,11 @@ class ChartServiceInstance implements ChartService {
                 new Point(2,4),
                 new Point(3,9),
                 new Point(4,16)
-        };
+        },
+                -4,
+                4,
+                -1,
+                16
+        );
     }
 }

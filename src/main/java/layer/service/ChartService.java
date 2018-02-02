@@ -1,7 +1,7 @@
 package layer.service;
 
-import model.Point;
+import model.Chart;
 
 public interface ChartService {
-    Point[] getChartPoints();
+    Chart getChart();
 }
