@@ -91,7 +91,13 @@
         headers: {'Content-Type': 'application/json'},
             type: 'POST',
             url: 'chart',
-            success: function (points) {
+            success: function (chart) {
+                let points = chart.points,
+                    suggestedMinX = chart.suggestedMinX,
+                    suggestedMaxX = chart.suggestedMaxX,
+                    suggestedMinY = chart.suggestedMinY,
+                    suggestedMaxY = chart.suggestedMaxY;
+
                 new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -113,16 +119,16 @@
                                 display: true,
                                 type: 'linear',
                                 ticks: {
-                                    suggestedMin: -4,
-                                    suggestedMax: 4
+                                    suggestedMin: suggestedMinX,
+                                    suggestedMax: suggestedMaxX
                                 }
                             }],
                             yAxes: [{
                                 display: true,
                                 type: 'linear',
                                 ticks: {
-                                    suggestedMin: -1,
-                                    suggestedMax: 16
+                                    suggestedMin: suggestedMinY,
+                                    suggestedMax: suggestedMaxY
                                 }
                             }]
 
