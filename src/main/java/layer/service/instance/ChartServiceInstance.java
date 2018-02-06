@@ -10,6 +10,7 @@ class ChartServiceInstance implements ChartService {
 
     @Override
     public Chart getChart() {
+        //TODO: move to repository
         return new Chart(new Point[] {
                 new Point(-4,16),
                 new Point(-3,9),
