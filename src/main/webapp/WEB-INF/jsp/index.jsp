@@ -83,61 +83,7 @@
 </div>
 
 <div class="container">
-    <canvas id="myChart" width="900" height="600"></canvas>
-    <script>
-        let ctx = document.getElementById("myChart").getContext('2d');
-
-        $.ajax({
-        headers: {'Content-Type': 'application/json'},
-            type: 'POST',
-            url: 'chart',
-            success: function (chart) {
-                let points = chart.points,
-                    suggestedMinX = chart.suggestedMinX,
-                    suggestedMaxX = chart.suggestedMaxX,
-                    suggestedMinY = chart.suggestedMinY,
-                    suggestedMaxY = chart.suggestedMaxY;
-
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        datasets: [{
-                            fill: false,
-                            borderColor: 'rgb(0, 0, 0)',
-                            data: points
-                        }]
-                    },
-                    options: {
-                        legend: {
-                            display: false
-                        },
-                        tooltips: {
-                            enabled: false
-                        },
-                        scales: {
-                            xAxes: [{
-                                display: true,
-                                type: 'linear',
-                                ticks: {
-                                    suggestedMin: suggestedMinX,
-                                    suggestedMax: suggestedMaxX
-                                }
-                            }],
-                            yAxes: [{
-                                display: true,
-                                type: 'linear',
-                                ticks: {
-                                    suggestedMin: suggestedMinY,
-                                    suggestedMax: suggestedMaxY
-                                }
-                            }]
-
-                        }
-                    }
-                });
-            }
-        });
-    </script>
+    <canvas id="chart" width="900" height="600"></canvas>
 </div>
 
 </body>
