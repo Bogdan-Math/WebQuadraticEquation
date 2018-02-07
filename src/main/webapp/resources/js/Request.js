@@ -1,4 +1,4 @@
-let sendRequest = function () {
+let solveEquation = function () {
     $.ajax({
         headers: {'Content-Type': 'application/json'},
         type: 'POST',
