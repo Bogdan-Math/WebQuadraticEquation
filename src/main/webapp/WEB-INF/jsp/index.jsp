@@ -25,9 +25,10 @@
 
     <%--custom SCRIPTS--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Alert.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Chart.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Constant.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Main.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Request.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Requests.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ResponseHandler.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Validator.js"></script>
 

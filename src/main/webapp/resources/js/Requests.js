@@ -8,7 +8,16 @@ let solveEquation = function () {
             'paramB': $('#param_b').val(),
             'paramC': $('#param_c').val()
         }),
-        success: handleSuccess,
+        success: handleSolutions,
         error: handleError
+    });
+};
+
+let addChart = function () {
+    $.ajax({
+        headers: {'Content-Type': 'application/json'},
+        type: 'POST',
+        url: 'chart',
+        success: drawChart
     });
 };
