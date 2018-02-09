@@ -8,8 +8,8 @@ let solveEquation = function () {
             'paramB': $('#param_b').val(),
             'paramC': $('#param_c').val()
         }),
-        success: handleSolutions,
-        error: handleError
+        success: handleSuccessSolving,
+        error: handleErrorSolving
     });
 };
 
