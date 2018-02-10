@@ -130,6 +130,8 @@
             <version>${animate.css.version}</version>
         </dependency>
 
+        <!--TODO: add db schemas manage tool-->
+
     </dependencies>
 
 </project>
