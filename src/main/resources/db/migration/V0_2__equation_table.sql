@@ -1,0 +1,11 @@
+CREATE TABLE equation
+(
+  id INTEGER DEFAULT nextval('global_sequence' :: REGCLASS) NOT NULL
+     CONSTRAINT equation_pk
+     PRIMARY KEY,
+
+  param_a DOUBLE PRECISION DEFAULT 0,
+  param_b DOUBLE PRECISION DEFAULT 0,
+  param_c DOUBLE PRECISION DEFAULT 0
+);
+
