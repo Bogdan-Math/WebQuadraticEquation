@@ -76,6 +76,15 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <!--Properties mapping (maven properties would be mapped to files in this paths)-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
     </build>
 
     <!--dependencies-->
