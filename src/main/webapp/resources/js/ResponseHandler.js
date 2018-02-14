@@ -31,17 +31,16 @@ let handleSuccessSolving = function (solutions) {
         if (oneSolution) {
             drawOneSolution();
             showAlert('success', ONE_SOLUTION_DESCRIPTION);
-            drawChartRequest();
         }
 
         if (twoSolutions) {
             drawTwoSolutions();
             showAlert('success', TWO_SOLUTIONS_DESCRIPTION);
-            drawChartRequest();
         }
     } else {
         showAlert('warning', DISCRIMINANT_DESCRIPTION);
     }
+    drawChartRequest();
 };
 
 let handleErrorSolving = function () {

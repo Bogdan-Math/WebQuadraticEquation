@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
-
 @RestController
 @RequestMapping(value = "/chart")
 public class ChartController {
@@ -23,7 +21,6 @@ public class ChartController {
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public Chart chart(@RequestBody Equation equation) {
-        System.out.println(equation);
-        return chartService.getChart();
+        return chartService.buildChartFor(equation);
     }
 }
