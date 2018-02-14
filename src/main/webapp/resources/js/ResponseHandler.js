@@ -30,15 +30,16 @@ let handleSuccessSolving = function (solutions) {
 
         if (oneSolution) {
             drawOneSolution();
-            showAlert('success', ONE_SOLUTION_DESCRIPTION);
+            showAlert('success', ONE_SOLUTION);
         }
 
         if (twoSolutions) {
             drawTwoSolutions();
-            showAlert('success', TWO_SOLUTIONS_DESCRIPTION);
+            showAlert('success', TWO_SOLUTIONS);
         }
     } else {
-        showAlert('warning', DISCRIMINANT_DESCRIPTION);
+        $('#result').html("&nbsp;");
+        showAlert('warning', DISCRIMINANT_LESS_THAN_ZERO);
     }
     drawChartRequest();
 };

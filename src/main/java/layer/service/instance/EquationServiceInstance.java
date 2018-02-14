@@ -65,6 +65,5 @@ class EquationServiceInstance implements EquationService {
             }
             equationRepository.save(incomeEquation);
         }
-
     }
 }
