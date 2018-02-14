@@ -31,13 +31,13 @@ let handleSuccessSolving = function (solutions) {
         if (oneSolution) {
             drawOneSolution();
             showAlert('success', ONE_SOLUTION_DESCRIPTION);
-            addChart();
+            drawChartRequest();
         }
 
         if (twoSolutions) {
             drawTwoSolutions();
             showAlert('success', TWO_SOLUTIONS_DESCRIPTION);
-            addChart();
+            drawChartRequest();
         }
     } else {
         showAlert('warning', DISCRIMINANT_DESCRIPTION);

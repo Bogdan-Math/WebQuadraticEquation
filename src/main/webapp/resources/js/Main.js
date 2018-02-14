@@ -4,5 +4,5 @@ $(document).ready(function () {
     $('#param_b').on('change', validateParameters);
     $('#param_c').on('change', validateParameters);
 
-    $('#solve').on('click', solveEquation);
+    $('#solve').on('click', solveEquationRequest);
 });
