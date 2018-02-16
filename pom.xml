@@ -176,6 +176,7 @@
             <version>${flyway.version}</version>
         </dependency>
 
+        <!--TODO: add Redis (Jedis) db-->
 
     </dependencies>
 
