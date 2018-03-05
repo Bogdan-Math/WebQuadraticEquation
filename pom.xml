@@ -25,17 +25,20 @@
         <servlet.version>2.5</servlet.version>
         <jackson-json.version>2.7.3</jackson-json.version>
         <flyway.version>5.0.2</flyway.version>
-
-        <db.driver>org.postgresql.Driver</db.driver>
-        <db.url>jdbc:postgresql://ec2-23-21-236-249.compute-1.amazonaws.com:5432/dcbsut0on5l14r?sslmode=require</db.url>
-        <db.user>ipqjfawccilvsa</db.user>
-        <db.password>19813967cfaddb8a5950e63cfc81c9311e1975c2f1f4a2c29d6bf09c6571fb27</db.password>
+        <embedded.redis.version>0.6</embedded.redis.version>
+        <junit.version>4.12</junit.version>
 
         <!--webjars-->
         <webjars-jquery.version>3.2.1</webjars-jquery.version>
         <bootstrap.version>4.0.0-beta.2</bootstrap.version>
         <bootstrap-notify.version>3.1.3</bootstrap-notify.version>
         <animate.css.version>3.5.2</animate.css.version>
+
+        <!--db connect properties-->
+        <db.driver>org.postgresql.Driver</db.driver>
+        <db.url>jdbc:postgresql://ec2-23-21-236-249.compute-1.amazonaws.com:5432/dcbsut0on5l14r?sslmode=require</db.url>
+        <db.user>ipqjfawccilvsa</db.user>
+        <db.password>19813967cfaddb8a5950e63cfc81c9311e1975c2f1f4a2c29d6bf09c6571fb27</db.password>
     </properties>
 
     <!--build properties-->
@@ -180,7 +183,7 @@
         <dependency>
             <groupId>com.orange.redis-embedded</groupId>
             <artifactId>embedded-redis</artifactId>
-            <version>0.6</version>
+            <version>${embedded.redis.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -188,7 +191,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
