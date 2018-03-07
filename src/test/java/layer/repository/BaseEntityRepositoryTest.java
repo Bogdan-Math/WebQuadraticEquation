@@ -1,13 +1,15 @@
 package layer.repository;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import redis.embedded.RedisServer;
 
 public class BaseEntityRepositoryTest {
 
     @Test
-    public void name() {
-        System.out.println("qwerty");
+    public void name() throws Exception {
+        RedisServer redisServer = new RedisServer();
+        redisServer.start();
+
+        redisServer.stop();
     }
 }
