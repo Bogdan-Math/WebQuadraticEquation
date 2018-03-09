@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Set;
 
 @Service
-class EquationServiceInstance implements EquationService {
+public class EquationServiceInstance implements EquationService {
 
     @Autowired
     private BaseEntityRepository<Equation> equationRepository;
