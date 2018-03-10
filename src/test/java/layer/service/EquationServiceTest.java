@@ -1,5 +1,6 @@
 package layer.service;
 
+import layer.repository.BaseEntityRepository;
 import layer.service.instance.EquationServiceInstance;
 import model.Equation;
 import model.Solution;
@@ -12,21 +13,34 @@ import static org.junit.Assert.assertTrue;
 public class EquationServiceTest {
 
     private EquationService equationService;
+    private BaseEntityRepository<Equation> equationRepository;
     private Equation equation;
 
     @Before
     public void setUp() {
         this.equationService = new EquationServiceInstance();
-        this.equation = new Equation();
+        this.equationRepository = new BaseEntityRepository<Equation>() {
+            @Override
+            public Equation check(Equation entity) {
+                return equation;
+            }
+
+            @Override
+            public Equation save(Equation entity) {
+                return entity;
+            }
+        };
+        this.equation = new Equation() {{
+            setParamA(1);
+            setParamB(-2);
+            setParamC(1);
+        }};
     }
 
     @Test
     public void solveEquationDiscriminantEqualToZero() {
         // Arrange
         Double one = 1d;
-        equation.setParamA(1);
-        equation.setParamB(-2);
-        equation.setParamC(1);
 
         // Act
         equationService.solve(equation);
@@ -40,6 +54,6 @@ public class EquationServiceTest {
 
     @Test
     public void save() {
-        //TODO: add test by TDD style
+        equationService.save(equation);
     }
 }
