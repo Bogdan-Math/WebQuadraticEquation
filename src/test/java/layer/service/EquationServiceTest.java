@@ -22,12 +22,13 @@ public class EquationServiceTest {
         this.equationRepository = new BaseEntityRepository<Equation>() {
             @Override
             public Equation check(Equation entity) {
-                return equation;
+                entity.setId(1L);
+                return entity;
             }
 
             @Override
             public Equation save(Equation entity) {
-                return entity;
+                return check(entity);
             }
         };
         this.equation = new Equation() {{
@@ -54,6 +55,8 @@ public class EquationServiceTest {
 
     @Test
     public void save() {
+        Long one = 1L;
         equationService.save(equation);
+        assertEquals(equation.getId(), one);
     }
 }
