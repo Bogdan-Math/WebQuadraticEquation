@@ -179,14 +179,6 @@
             <version>${flyway.version}</version>
         </dependency>
 
-        <!--REDIS -  key->value store (embedded implementation)-->
-        <dependency>
-            <groupId>com.orange.redis-embedded</groupId>
-            <artifactId>embedded-redis</artifactId>
-            <version>${embedded.redis.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <!--Junit framework (tests)-->
         <dependency>
             <groupId>junit</groupId>
